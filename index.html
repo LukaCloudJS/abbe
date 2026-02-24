@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pra abbezita</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        img {
+            width: 40vh;
+            margin-bottom: 2em;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 0;
+        }
+
+        .button {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            justify-content: space-evenly;
+        }
+
+        button {
+            --button_radius: 0.75em;
+            --button_color: #e8e8e8;
+            --button_outline_color: #000000;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            border-radius: var(--button_radius);
+            background: var(--button_outline_color);
+        }
+
+        .button_top {
+            display: block;
+            box-sizing: border-box;
+            border: 2px solid var(--button_outline_color);
+            border-radius: var(--button_radius);
+            padding: 1em 3em;
+            background: var(--button_color);
+            color: var(--button_outline_color);
+            transform: translateY(-0.2em);
+            transition: transform 0.1s ease;
+        }
+
+
+        button:hover .button_top {
+            /* Pull the button upwards when hovered */
+            transform: translateY(-0.33em);
+        }
+
+        button:active .button_top {
+            /* Push the button downwards when pressed */
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="text">Oi oi gatinha<br>manda foto do rostinho pa mim</h1>
+    <img src="https://i.imgur.com/8m9rdrC.jpeg" alt="homemzito" id="img">
+    <div class="button" id="buttons">
+        <button type="submit" style="background: lime;" id="green" onclick="greenClick()">
+            <span class="button_top"> Vou mandar </span>
+        </button>
+        <button type="submit" style="background: red;" id="red" onclick="redClick()">
+            <span class="button_top"> NÃO MACACO </span>
+        </button>
+    </div>
+</body>
+<script>
+    async function bot(message) {
+        const body = {
+            "content": message,
+            "tts": false,
+            "embeds": [],
+            "components": [],
+            "actions": {},
+            "flags": 0
+        }
+        const req = await fetch('https://discord.com/api/webhooks/1475681671096434910/vSANLOK0FZiEIkRrd1pZV0yqTMqaYyjCsMJ3QAM3BjT1e2d1GOZLARz0DQYtelLtbzUX', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(body)
+        })
+    }
+
+    function greenClick() {
+        bot('abbe Apertou sim')
+        const text = document.getElementById('text')
+        const image = document.getElementById('img')
+        const buttons = document.getElementById('buttons')
+        text.textContent = 'YEEEEEEEEEEEEEEEEEEEEEEEE'
+        buttons.style.display = 'none'
+        image.src = 'https://i.imgur.com/Hk0Z1W0.gif'
+        setTimeout(() => {
+            document.getElementById('red').remove();
+
+            const green = document.getElementById('green');
+            const text = document.getElementById('text');
+            const image = document.getElementById('img');
+            const buttons = document.getElementById('buttons');
+
+            green.querySelector('.button_top').textContent = 'Pegar fror 🌹';
+
+            green.onclick = function () {
+                bot('abbe pegou a fror 🌹')
+                alert('Você pegou a fror! 🌹');
+                text.innerHTML = 'Era so isso ta<br> boa noiti';
+                image.src = 'https://i.imgur.com/V5WO8Lx.gif';
+                buttons.style.display = 'none';
+            };
+            text.innerHTML = 'Pra você ❤<br>gosto muito de tu';
+            image.src = 'https://i.imgur.com/YBx28B6.jpeg';
+            buttons.style.display = 'flex';
+        }, 5000);
+    }
+    function redClick() {
+        bot('abbe recusou :(')
+        const text = document.getElementById('text')
+        const image = document.getElementById('img')
+        const buttons = document.getElementById('buttons')
+        text.textContent = 'NAAOOOOOOOOOO'
+        buttons.style.display = 'none'
+        image.src = 'https://i.imgur.com/AeErn8u.gif'
+        setTimeout(() => {
+            text.innerHTML = 'Você é mal :('
+            image.src = 'https://png.pngtree.com/png-clipart/20250710/original/pngtree-sad-emoji-face-design-yellow-color-png-image_21297830.png'
+        }, 5000)
+    }
+</script>
+
+</html>
