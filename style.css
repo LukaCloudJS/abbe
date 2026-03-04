@@ -1,0 +1,132 @@
+* {
+    margin: 0;
+}
+
+body {
+    background: radial-gradient(circle, rgba(230, 30, 140, 1) 0%, rgba(146, 102, 150, 1) 100%);
+}
+
+.name {
+    color: white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.home {
+    color: white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    height: 90vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.deco {
+    margin: 0;
+    position: relative;
+    overflow: visible;
+    text-align: center;
+    border-radius: 6vh;
+    background: transparent;
+    border: white 3px dashed;
+    padding: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    font-size: 1.5rem;
+    color: white;
+    filter: drop-shadow(0 0 20px white);
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.deco:active {
+    background: pink;
+    transform: scale(0.80);
+    transition: transform 0.1s, background 0.1s;
+}
+
+.confete-coracao {
+    position: fixed;
+    z-index: 9999;
+    pointer-events: none;
+    font-size: 20px;
+    user-select: none;
+    animation: explosao 2s ease;
+}
+
+textarea {
+    resize: none;
+    background: transparent;
+    padding: 10px;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color:  white;
+    border: white 1px dashed;
+    margin: 15px;
+    transition: box-shadow 0.2s;
+}
+
+textarea:focus {
+    box-shadow: 0 0 5px 3px white;
+}
+
+@keyframes explosao {
+    0% {
+        transform: translate(0, 0) rotate(0deg) scale(0);
+        opacity: 1;
+    }
+
+    20% {
+        transform: translate(var(--x), var(--y)) rotate(var(--r)) scale(2.5);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(var(--x), calc(var(--y) + 150px)) rotate(calc(var(--r) * 2)) scale(1);
+        opacity: 0;
+    }
+}
+
+.fade {
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.btn-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.feedback-texto {
+    position: absolute;
+    left: 50%;
+    top: 80%;
+    transform: translateX(-50%);
+    color: white;
+    font-weight: bold;
+    pointer-events: none;
+    white-space: nowrap;
+    animation: flutuarESumir 1.5s ease-out forwards;
+}
+
+@keyframes flutuarESumir {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, 0);
+    }
+    20% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -100px);
+    }
+}
